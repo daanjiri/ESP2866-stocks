@@ -204,9 +204,25 @@ void loop() {
         const String price = doc["price"];
         const String movement = doc["movement"];
         const int sign = doc["sign"];
+        String mySign = String(sign);
+
+        const double mov = movement.toDouble();
+        String movementDisplay;
+
+        if (mov > 0)
+        {
+          movementDisplay = '+' + movement;
+        }
+        else
+        {
+          movementDisplay = movement;
+        }
 
         String stock = parameter;
         stock.toUpperCase();
+
+        Serial.println(payload);
+        Serial.println(mySign);
 
         display.clearDisplay();
         Serial.print("[LOOP] screen");
@@ -217,7 +233,12 @@ void loop() {
         display.print(stock);
         display.setCursor (10, 30);		// ubica cursor en coordenas 10,30
         display.setTextSize(2);			// establece tamano de texto en 2
-        display.print(movement);		// escribe valor de millis() dividido por 1000
+        display.print(price);		// escribe valor de millis() dividido por 1000
+       
+        display.setCursor (10, 52);		// ubica cursor en coordenas 10,30
+        display.setTextSize(1);			// establece tamano de texto en 2
+        display.print(movementDisplay);
+
         display.display(); 
 
         digitalWrite(RELAY, sign);
