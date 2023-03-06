@@ -203,8 +203,10 @@ void loop() {
 
         const String price = doc["price"];
         const String movement = doc["movement"];
-        const int sign = doc["sign"];
-        String mySign = String(sign);
+        // const int sign = doc["sign"];
+        // String mySign = String(sign);
+        String mySign;
+        int sign;
 
         const double mov = movement.toDouble();
         String movementDisplay;
@@ -212,10 +214,14 @@ void loop() {
         if (mov > 0)
         {
           movementDisplay = '+' + movement;
+          mySign = '1';
+          sign = 1;
         }
         else
         {
           movementDisplay = movement;
+          mySign = '0';
+          sign = 0;
         }
 
         String stock = parameter;
