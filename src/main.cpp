@@ -168,9 +168,12 @@ void setup() {
   }
 
   WiFi.mode(WIFI_STA);
-  WiFiMulti.addAP("GEMELOS92", "Gj180692");
+  // WiFiMulti.addAP("GEMELOS92", "Gj180692");
+  WiFiMulti.addAP("1802", "gj180692");
+
 
   pinMode(RELAY, OUTPUT); 
+  pinMode(LED_BUILTIN, OUTPUT); 
 }
 
 void loop() {
@@ -248,9 +251,8 @@ void loop() {
         display.display(); 
 
         digitalWrite(RELAY, sign);
+        digitalWrite(LED_BUILTIN, sign);
       }
-
-    
 
     }
     https.end();
